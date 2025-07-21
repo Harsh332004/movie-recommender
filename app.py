@@ -12,7 +12,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 cv = CountVectorizer(max_features=5000, stop_words='english')
 vector = cv.fit_transform(dataset['tags']).toarray()
-similarity = cosine_similarity(vecto
+similarity = cosine_similarity(vector)
 # Get movie titles
 movies_list = dataset['title_x'].values
 option = st.selectbox('Select a movie:', movies_list)
