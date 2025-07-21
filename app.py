@@ -7,8 +7,12 @@ st.title('Movie Recommendation System')
 
 # Load pickled files
 dataset = pickle.load(open('movies.pkl','rb'))
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
+cv = CountVectorizer(max_features=5000, stop_words='english')
+vector = cv.fit_transform(dataset['tags']).toarray()
+similarity = cosine_similarity(vecto
 # Get movie titles
 movies_list = dataset['title_x'].values
 option = st.selectbox('Select a movie:', movies_list)
